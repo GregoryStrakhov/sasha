@@ -8,7 +8,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>VetClient</title>
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="<c:url value="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>">

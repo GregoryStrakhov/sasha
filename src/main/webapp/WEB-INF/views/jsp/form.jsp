@@ -13,7 +13,16 @@
 
 <body>
 <div class="container">
-    <div class="well lead" align="center">Добавить студента</div>
+    <c:choose>
+        <c:when  test="${mode eq 'edit'}">
+            <div class="well lead" align="center">Изменить информацию о студенте</div>
+        </c:when>
+
+        <c:otherwise>
+            <div class="well lead" align="center">Добавить студента</div>
+        </c:otherwise>
+    </c:choose>
+
 
     <form:form method="POST" modelAttribute="studentForm" class="form-horizontal" action="/student/">
         <form:input type="hidden" path="id" id="id"/>

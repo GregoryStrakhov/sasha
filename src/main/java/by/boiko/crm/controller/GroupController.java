@@ -47,6 +47,6 @@ public class GroupController {
     @RequestMapping(value = "/group/", method = RequestMethod.POST)
     public String saveOrUpdateStudent(@ModelAttribute("groupForm") Group group) {
         groupService.saveOrUpdate(group);
-        return "redirect:/students";
+        return "redirect:/groups";
     }
 }

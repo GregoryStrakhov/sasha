@@ -9,8 +9,9 @@
 <html lang="en">
 <head>
 
-	<link rel="stylesheet" href="resources/css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="resources/css/bootstrap-theme.min.css"/>
+	<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+	<link rel="stylesheet" href="${contextPath}/resources/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="${contextPath}/resources/css/bootstrap-theme.min.css"/>
 
 
 	<script src="resources/js/bootstrap.min.js"></script>

@@ -11,7 +11,7 @@
 <jsp:include page="../fragments/header.jsp" />
 
 <div class="container">
-    <div class="well lead" align="center">Добавить студента</div>
+    <div class="well lead" align="center">Добавить группу</div>
 
     <form:form method="POST" modelAttribute="groupForm" class="form-horizontal" action="/group/">
         <form:input type="hidden" path="id" id="id"/>

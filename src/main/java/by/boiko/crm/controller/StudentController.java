@@ -60,10 +60,16 @@ public class StudentController {
     public ModelAndView openStudentEditForm() {
         ModelAndView mv = new ModelAndView("form", "studentForm", new StudentViewModel());
         mv.addObject("studentForm");
-        mv.addObject("list",groupService.allGroup());
+        mv.addObject("list",groupService.getAllGroup());
         return mv;
     }
 
+    /**
+     * Save a new student.
+     *
+     * @param studentViewModel converter
+     * @return to page with all students
+     */
     @RequestMapping(value = "/student/", method = RequestMethod.POST) //TODO saveOrUpdate a new student and @Link
     public String saveOrUpdateStudent(@ModelAttribute("studentForm") StudentViewModel studentViewModel) {
         StudentViewModelToStudentConverter studentViewModelToStudentConverter = new StudentViewModelToStudentConverter();
@@ -73,9 +79,9 @@ public class StudentController {
     }
 
     /**
+     * Update a student by identifier.
      *
      * @param studentId identifier of a student
-     * @param model
      * @return form for update
      */
     @RequestMapping(value = "/student/{studentId}", method = RequestMethod.GET)//TODO Update student
@@ -85,17 +91,18 @@ public class StudentController {
         StudentViewModel studentViewModel = studentToStudentVewModelConverter.convert(student);
         model.addAttribute("mode", mode);
         model.addAttribute("studentForm", studentViewModel);
-        model.addAttribute("list", groupService.allGroup());
+        model.addAttribute("list", groupService.getAllGroup());
         return "form";
     }
 
     /**
+     * Filter students named.
      *
-     * @param searchText
-     * @return
+     * @param searchText text for search
+     * @return page with the filtered students
      */
     @RequestMapping(value = "/search", method = RequestMethod.GET)
-    public ModelAndView searchStudentByName(@RequestParam(name = "searchText") String searchText) { //TODO change "searchText" "name"
+    public ModelAndView searchStudentByName(@RequestParam(name = "searchText") String searchText) {
         ModelAndView mv = new ModelAndView("list");
         mv.addObject("students", studentService.getStudentByName(searchText));
         return mv;

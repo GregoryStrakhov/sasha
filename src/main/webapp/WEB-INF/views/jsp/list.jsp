@@ -50,7 +50,7 @@
             <tr>
                 <td>${counter}</td>
                 <td>${students.fullName}</td>
-                <td>${students.numberGroup}</td>
+                <td>${students.group.numberGroup}</td>
                 <spring:url value="/student/${students.id}/delete" var="deleteStudent" />
                 <spring:url value="/student/${students.id}?mode=edit" var="editStudent" />
                 <td><button class="btn btn-primary" onclick="location.href='${editStudent}'">Изменить</button>

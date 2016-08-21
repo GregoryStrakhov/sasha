@@ -4,11 +4,15 @@ import by.boiko.crm.model.Student;
 import by.boiko.crm.model.StudentViewModel;
 
 /**
- * Created by ERIZO on 21.08.2016.
+ * Convert student to student view model.
  */
 public class StudentToStudentVewModelConverter {
 
-
+    /**
+     *
+     * @param student student object
+     * @return student object
+     */
     public StudentViewModel convert(Student student) {
         StudentViewModel studentViewModel = new StudentViewModel();
         studentViewModel.setId(student.getId());

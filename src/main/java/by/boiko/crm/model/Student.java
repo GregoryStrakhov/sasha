@@ -15,7 +15,7 @@ public class Student {
     @Column(name = "FULL_NAME")
     private String fullName;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "GROUP_ID")
     private Group group;
 

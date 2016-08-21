@@ -6,20 +6,29 @@ import by.boiko.crm.model.Student;
 
 import java.util.List;
 
+/**
+ * The interface determines the basic methods of access to the database.
+ */
 public interface GroupDao {
 
-    List<Group> loadAll();
-
+    /**
+     * Deletes a group from a storage by id.
+     *
+     * @param id identifier of a group to delete
+     */
     void delete(int id);
 
+    /**
+     * Saves a group into a storage.
+     *
+     * @param group groups object to saveOrUpdate
+     */
     void saveOrUpdate(Group group);//TODO change name
-
-    Group load(int id);
 
     /**
      * Loads list of all groups from a storage.
      *
      * @return list of groups
      */
-    List<Group> allGroup(); // TODO replace metod and rename
+    List<Group> getAllGroup(); // TODO replace metod and rename
 }

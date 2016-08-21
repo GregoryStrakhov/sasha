@@ -15,7 +15,7 @@ public class Group {
     @Column(name = "NUMBER")
     private Integer numberGroup;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "group")
+    @OneToMany(mappedBy = "group")
     private Set<Student> student;
 
     public Group() {

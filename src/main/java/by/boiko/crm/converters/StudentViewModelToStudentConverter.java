@@ -5,7 +5,7 @@ import by.boiko.crm.model.Student;
 import by.boiko.crm.model.StudentViewModel;
 
 /**
- *
+ * Convert student view model to student.
  */
 public class StudentViewModelToStudentConverter {
     /**

@@ -15,16 +15,6 @@ public class GroupServiceImpl implements GroupService {
     private GroupDao groupDao;
 
     @Transactional
-    public List<Group> getAll() {
-        return groupDao.loadAll();
-    }
-
-    @Transactional
-    public Group get(int id) {
-        return groupDao.load(id);
-    }
-
-    @Transactional
     public void delete(int id) {
         groupDao.delete(id);
     }
@@ -35,7 +25,7 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Transactional
-    public List<Group> allGroup() {
-        return groupDao.allGroup();
+    public List<Group> getAllGroup() {
+        return groupDao.getAllGroup();
     }
 }

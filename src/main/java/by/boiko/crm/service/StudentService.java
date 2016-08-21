@@ -29,7 +29,7 @@ public interface StudentService {
     /**
      * Deletes a student by id.
      *
-     * @param id dentifier of a student
+     * @param id identifier of a student
      */
     void delete(int id);
 

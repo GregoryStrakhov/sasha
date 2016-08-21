@@ -9,16 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
+/**
+ * The class implements methods for access to MySQL database for Group.
+ */
 public class GroupDaoImpl implements GroupDao {
 
     @Autowired
     private SessionFactory sessionFactory;
-
-    @SuppressWarnings("unchecked")
-    public List<Group> loadAll() {
-        return sessionFactory.getCurrentSession().createQuery("from Group")
-                .list();
-    }
 
     @Override
     public void delete(int id) {
@@ -35,12 +32,7 @@ public class GroupDaoImpl implements GroupDao {
     }
 
     @Override
-    public Group load(int id) {
-        return (Group) sessionFactory.getCurrentSession().createQuery("select u from Group u where id = :id").setParameter("id", id).uniqueResult();
-    }
-
-    @Override
-    public List<Group> allGroup() {
+    public List<Group> getAllGroup() {
         return sessionFactory.getCurrentSession().createQuery("FROM Group").list();
     }
 }

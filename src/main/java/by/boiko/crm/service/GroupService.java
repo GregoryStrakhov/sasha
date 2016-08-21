@@ -6,36 +6,29 @@ import by.boiko.crm.model.Student;
 
 import java.util.List;
 
+/**
+ * The interface determines the methods for work with Group.
+ */
 public interface GroupService {
 
     /**
+     * Deletes a group by id.
      *
-     * @return
-     */
-    List<Group> getAll();
-
-    /**
-     *
-     * @param id
-     * @return
-     */
-    Group get(int id);
-
-    /**
-     *
-     * @param id
+     * @param id identifier of a group
      */
     void delete(int id);
 
     /**
+     * Saves a group.
      *
-     * @param group
+     * @param group group object to saveOrUpdate
      */
     void saveOrUpdate(Group group);
 
     /**
+     * Loads list of all groups.
      *
-     * @return
+     * @return list of groups
      */
-    List<Group> allGroup();
+    List<Group> getAllGroup();
 }

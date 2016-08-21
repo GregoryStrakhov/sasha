@@ -9,11 +9,11 @@
 <html lang="en">
 <head>
 
-	<link rel="stylesheet" href="/resources/css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="/resources/css/bootstrap-theme.min.css"/>
+	<link rel="stylesheet" href="resources/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="resources/css/bootstrap-theme.min.css"/>
 
 
-	<script src="/resources/js/bootstrap.min.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
 
 </head>
 <title>Test</title>

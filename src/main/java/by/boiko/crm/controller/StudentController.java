@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  * The controller determines methods for access to Student service.
  */
+
 @Controller
 public class StudentController {
 
@@ -56,7 +57,7 @@ public class StudentController {
      *
      * @return page with form
      */
-    @RequestMapping(value = "/student/form")//TODO add method GET or POST
+    @RequestMapping(value = "/student/form")
     public ModelAndView openStudentEditForm() {
         ModelAndView mv = new ModelAndView("form", "studentForm", new StudentViewModel());
         mv.addObject("studentForm");
@@ -70,7 +71,7 @@ public class StudentController {
      * @param studentViewModel converter
      * @return to page with all students
      */
-    @RequestMapping(value = "/student/", method = RequestMethod.POST) //TODO saveOrUpdate a new student and @Link
+    @RequestMapping(value = "/student/", method = RequestMethod.POST)
     public String saveOrUpdateStudent(@ModelAttribute("studentForm") StudentViewModel studentViewModel) {
         StudentViewModelToStudentConverter studentViewModelToStudentConverter = new StudentViewModelToStudentConverter();
         Student student = studentViewModelToStudentConverter.convert(studentViewModel) ;
@@ -84,7 +85,7 @@ public class StudentController {
      * @param studentId identifier of a student
      * @return form for update
      */
-    @RequestMapping(value = "/student/{studentId}", method = RequestMethod.GET)//TODO Update student
+    @RequestMapping(value = "/student/{studentId}", method = RequestMethod.GET)
     public String getStudent(@PathVariable("studentId") int studentId, Model model, @RequestParam("mode") String mode) {
         StudentToStudentVewModelConverter studentToStudentVewModelConverter = new StudentToStudentVewModelConverter();
         Student student = studentService.get(studentId);

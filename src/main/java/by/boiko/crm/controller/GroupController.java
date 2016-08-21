@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  * The controller determines methods for access to Group service.
  */
+@RequestMapping(value = "/group")
 @Controller
 public class GroupController {
 
@@ -24,7 +25,7 @@ public class GroupController {
      *
      * @return list of students
      */
-    @RequestMapping(value = "/groups")
+    @RequestMapping(value = "/all")
     public ModelAndView getAllGroups() {
         ModelAndView mv = new ModelAndView("listGroup");
         mv.addObject("groups", groupService.getAllGroup());
@@ -36,14 +37,15 @@ public class GroupController {
      * Deletes a group by identifier.
      *
      * @param groupId identifier of a group to delete
-     * @return refresh the page
+     * @return list with all groups
      */
-    @RequestMapping(value = "/group/{groupId}/delete", method = RequestMethod.GET )
+    @RequestMapping(value = "/{groupId}/delete", method = RequestMethod.GET )
     public String deleteGroup(@PathVariable("groupId") int groupId) {
         groupService.delete(groupId);
         ModelAndView mv = new ModelAndView("list");
         mv.addObject("groups", groupService.getAllGroup());
-        return "redirect:/groups";
+        return "redirect:/group/all";
+
     }
 
     /**
@@ -51,7 +53,7 @@ public class GroupController {
      *
      * @return page with form
      */
-    @RequestMapping(value = "/group/form")
+    @RequestMapping(value = "/form")
     public ModelAndView openGroupForm() {
         ModelAndView mv = new ModelAndView("formGroup", "groupForm", new Group());
         mv.addObject("groupForm");
@@ -62,11 +64,11 @@ public class GroupController {
      * Save a new student.
      *
      * @param group group object
-     * @return to page with all students
+     * @return list with all groups
      */
-    @RequestMapping(value = "/group/", method = RequestMethod.POST)
-    public String saveOrUpdateStudent(@ModelAttribute("groupForm") Group group) {
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String saveOrUpdateGroup(@ModelAttribute("groupForm") Group group) {
         groupService.saveOrUpdate(group);
-        return "redirect:/groups";
+        return "redirect:/group/all";
     }
 }

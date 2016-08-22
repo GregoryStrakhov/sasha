@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  * The controller determines methods for access to Student service.
  */
-
+@RequestMapping(value = "/student")
 @Controller
 public class StudentController {
 
@@ -31,7 +31,7 @@ public class StudentController {
      *
      * @return list of students
      */
-    @RequestMapping(value = "/students")
+    @RequestMapping(value = "/all")
     public ModelAndView getAllStudents() {
         ModelAndView mv = new ModelAndView("list");
         mv.addObject("students", studentService.getAll());
@@ -44,12 +44,12 @@ public class StudentController {
      * @param studentId identifier of a student to delete
      * @return refresh the page
      */
-    @RequestMapping(value = "/student/{studentId}/delete", method = RequestMethod.GET )
+    @RequestMapping(value = "/{studentId}/delete", method = RequestMethod.GET )
     public String deleteStudent(@PathVariable("studentId") int studentId) {
         studentService.delete(studentId);
         ModelAndView mv = new ModelAndView("list");
         mv.addObject("students", studentService.getAll());
-        return "redirect:/students";
+        return "redirect:/student/all";
     }
 
     /**
@@ -57,7 +57,7 @@ public class StudentController {
      *
      * @return page with form
      */
-    @RequestMapping(value = "/student/form")
+    @RequestMapping(value = "/form")
     public ModelAndView openStudentEditForm() {
         ModelAndView mv = new ModelAndView("form", "studentForm", new StudentViewModel());
         mv.addObject("studentForm");
@@ -71,12 +71,12 @@ public class StudentController {
      * @param studentViewModel converter
      * @return to page with all students
      */
-    @RequestMapping(value = "/student/", method = RequestMethod.POST)
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveOrUpdateStudent(@ModelAttribute("studentForm") StudentViewModel studentViewModel) {
         StudentViewModelToStudentConverter studentViewModelToStudentConverter = new StudentViewModelToStudentConverter();
         Student student = studentViewModelToStudentConverter.convert(studentViewModel) ;
         studentService.saveOrUpdate(student);
-        return "redirect:/students";
+        return "redirect:/student/all";
     }
 
     /**
@@ -85,7 +85,7 @@ public class StudentController {
      * @param studentId identifier of a student
      * @return form for update
      */
-    @RequestMapping(value = "/student/{studentId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{studentId}", method = RequestMethod.GET)
     public String getStudent(@PathVariable("studentId") int studentId, Model model, @RequestParam("mode") String mode) {
         StudentToStudentVewModelConverter studentToStudentVewModelConverter = new StudentToStudentVewModelConverter();
         Student student = studentService.get(studentId);

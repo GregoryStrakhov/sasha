@@ -19,7 +19,7 @@
 </head>
 <title>Test</title>
 <spring:url value="/" var="urlHome" />
-<spring:url value="/students" var="listStudents" />
+<spring:url value="/student/all" var="listStudents" />
 <spring:url value="/group/all" var="listGroups" />
 
 <nav class="navbar navbar-inverse">

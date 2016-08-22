@@ -19,7 +19,7 @@
 </head>
 <body>
 <div class="container">
-<spring:url value="/students" var="listStudents" />
+<spring:url value="/student/all" var="listStudents" />
 <div style="text-align: center; margin-top: 15%"><button class="btn btn-lg btn-danger" onclick="location.href='${listStudents}'">Список студентов</button></div>
 </div>
 </body>

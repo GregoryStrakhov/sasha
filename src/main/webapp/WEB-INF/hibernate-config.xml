@@ -44,9 +44,4 @@
     <bean id="persistenceExceptionTranslationPostProcessor"
           class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
 
-    <bean id="studentDao" class="by.boiko.crm.dao.impl.StudentDaoImpl"></bean>
-    <bean id="studentService" class="by.boiko.crm.service.impl.StudentServiceImpl"></bean>
-    <bean id="groupDao" class="by.boiko.crm.dao.impl.GroupDaoImpl"></bean>
-    <bean id="groupService" class="by.boiko.crm.service.impl.GroupServiceImpl"></bean>
-
 </beans>

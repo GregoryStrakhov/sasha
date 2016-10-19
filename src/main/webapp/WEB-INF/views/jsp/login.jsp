@@ -7,20 +7,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="<c:url value="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="<c:url value="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"/>">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <title>Title</title>
+    <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+    <link rel="stylesheet" href="${contextPath}/resources/css/bootstrap.min.css"/>
+    <title>VetClient</title>
 </head>
 <body>
-<div class="container">
-<spring:url value="/students" var="listStudents" />
-<div style="text-align: center; margin-top: 15%"><button class="btn btn-lg btn-danger" onclick="location.href='${listStudents}'">Список студентов</button></div>
+<div class="container" style="width: 300px;">
+<c:url value="/j_spring_security_check" var="loginUrl" />
+<form action="${loginUrl}" method="post">
+    <div style="text-align: center;"><h2 class="form-signin-heading">VetClient</h2></div>
+    <input type="text" class="form-control" name="j_username" placeholder="Логин"><br>
+    <input type="password" class="form-control" name="j_password" placeholder="Пароль"><br>
+    <button class="btn btn-lg btn-danger btn-block" type="submit">Войти</button>
+</form>
+
 </div>
 </body>
 </html>

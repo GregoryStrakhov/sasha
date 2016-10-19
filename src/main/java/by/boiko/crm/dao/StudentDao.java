@@ -3,12 +3,14 @@ package by.boiko.crm.dao;
 
 import by.boiko.crm.model.Group;
 import by.boiko.crm.model.Student;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * The interface determines the basic methods of access to the database.
  */
+@Service
 public interface StudentDao {
 
     /**

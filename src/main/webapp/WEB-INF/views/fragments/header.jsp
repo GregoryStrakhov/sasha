@@ -8,16 +8,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 	<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 	<link rel="stylesheet" href="${contextPath}/resources/css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="${contextPath}/resources/css/bootstrap-theme.min.css"/>
-
-
+	<%--<link rel="stylesheet" href="${contextPath}/resources/css/bootstrap-theme.min.css"/>--%>
 	<script src="resources/js/bootstrap.min.js"></script>
-
 </head>
-<title>Test</title>
+<title>VetClient</title>
 <spring:url value="/" var="urlHome" />
 <spring:url value="/students" var="listStudents" />
 <spring:url value="/groups" var="listGroups" />

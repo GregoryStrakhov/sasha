@@ -7,7 +7,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Test</title>
     <jsp:include page="../fragments/header.jsp" />
 </head>
 

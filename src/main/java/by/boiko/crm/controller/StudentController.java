@@ -32,7 +32,8 @@ public class StudentController {
      */
     @RequestMapping(value = "/students")
     public ModelAndView getAllStudents() {
-        ModelAndView mv = new ModelAndView("list");
+//        ModelAndView mv = new ModelAndView("list");
+        ModelAndView mv = new ModelAndView("newList");
         mv.addObject("students", studentService.getAll());
         return mv;
     }

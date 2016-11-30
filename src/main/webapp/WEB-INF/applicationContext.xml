@@ -39,8 +39,6 @@
     <bean
             class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
 
-    <bean id="studentDao" class="by.boiko.crm.dao.impl.StudentDaoImpl"/>
-    <bean id="studentService" class="by.boiko.crm.service.impl.StudentServiceImpl"/>
-    <bean id="groupDao" class="by.boiko.crm.dao.impl.GroupDaoImpl"/>
-    <bean id="groupService" class="by.boiko.crm.service.impl.GroupServiceImpl"/>
+    <bean id="userDao" class="by.boiko.crm.dao.impl.UserDaoImpl"/>
+    <bean id="userService" class="by.boiko.crm.service.impl.UserServiceImpl"/>
 </beans>

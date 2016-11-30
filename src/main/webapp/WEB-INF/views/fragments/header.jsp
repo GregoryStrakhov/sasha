@@ -15,41 +15,19 @@
 </head>
 <title>VetClient</title>
 <spring:url value="/" var="urlHome" />
-<spring:url value="/students" var="listStudents" />
-<spring:url value="/groups" var="listGroups" />
+<spring:url value="/user" var="listUsers" />
+
 
 <nav class="navbar navbar-light bg-faded">
 	<ul class="nav navbar-nav">
 		<li class="nav-item active">
-			<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+			<a class="nav-link" href="${listUsers}">Список пользователей <span class="sr-only">(current)</span></a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="#">Features</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="#">Pricing</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="#">About</a>
+			<a class="nav-link" href="#">Список задач</a>
 		</li>
 	</ul>
 </nav>
-
-		<%--<div class="navbar-header">--%>
-			<%--<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".js-navbar">--%>
-				<%--<span class="sr-only">Toggle navigation</span>--%>
-				<%--<span class="icon-bar"></span>--%>
-				<%--<span class="icon-bar"></span>--%>
-				<%--<span class="icon-bar"></span>--%>
-			<%--</button>--%>
-			<%--<a class="navbar-brand" href="${urlHome}" style="padding:15px 15px;">Test</a>--%>
-		<%--</div>--%>
-		<%--<div class="collapse navbar-collapse js-navbar">--%>
-			<%--<ul class="nav navbar-nav">--%>
-				<%--<li><a href="${listStudents}">Список студентов</a></li>--%>
-				<%--<li><a href="${listGroups}">Список групп</a></li>--%>
-			<%--</ul>--%>
-		<%--</div>--%>
 
 </nav>
 </html>

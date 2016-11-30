@@ -13,11 +13,11 @@
 <div class="container">
     <div class="well lead" align="center">Добавить группу</div>
 
-    <form:form method="POST" modelAttribute="groupForm" class="form-horizontal" action="/group/">
+    <form:form method="POST" modelAttribute="groupForm" class="form-horizontal" action="/listToDO/">
         <form:input type="hidden" path="id" id="id"/>
 
         <spring:bind path="numberGroup">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
+            <div class="form-listToDO ${status.error ? 'has-error' : ''}">
                 <label class="col-sm-2 control-label">Ф.И.О.</label>
                 <div class="col-sm-3">
                     <form:input path="numberGroup" type="text" class="form-control " id="numberGroup" placeholder="Номер группы" required="required" />
@@ -25,7 +25,7 @@
             </div>
         </spring:bind>
 
-        <div class="form-group">
+        <div class="form-listToDO">
             <div class="col-sm-offset-2 col-sm-10">
                 <button type="submit" class="btn btn-info">Сохранить</button>
             </div>

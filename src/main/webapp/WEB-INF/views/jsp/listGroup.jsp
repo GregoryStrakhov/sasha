@@ -27,14 +27,14 @@
             <tr>
                 <td>${counter}</td>
                 <td>${groups.numberGroup}</td>
-                <spring:url value="/group/${groups.id}/delete" var="deleteGroup"/>
+                <spring:url value="/listToDO/${groups.id}/delete" var="deleteGroup"/>
                 <td>
                     <button class="btn btn-danger" onclick="location.href='${deleteGroup}'">Удалить</button>
                 </td>
             </tr>
         </c:forEach>
     </table>
-    <spring:url value="/group/form" var="AddGroup"/>
+    <spring:url value="/listToDO/form" var="AddGroup"/>
     <button class="btn btn-info" onclick="location.href='${AddGroup}'">Добавить</button>
 </div>
 <jsp:include page="../fragments/footer.jsp"/>

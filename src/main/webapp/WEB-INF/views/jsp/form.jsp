@@ -12,62 +12,38 @@
 <jsp:include page="../fragments/header.jsp" />
 
 <body>
-<div class="container">
+<div class="container"><br>
     <c:choose>
         <c:when  test="${mode eq 'edit'}">
-            <div class="well lead" align="center">Изменить информацию о студенте</div>
+            <div class="well lead" align="center">Изменить информацию о пользователе</div>
         </c:when>
 
         <c:otherwise>
-            <div class="well lead" align="center">Добавить студента</div>
+            <div class="well lead" align="center"><h1>Добавить пользователя</h1></div>
         </c:otherwise>
-    </c:choose>
+    </c:choose><br><br>
 
 
-    <form:form method="POST" modelAttribute="studentForm" class="form-horizontal" action="/student/">
+    <form:form method="POST" modelAttribute="userForm" class="form-horizontal" action="/user/save/">
         <form:input type="hidden" path="id" id="id"/>
 
-        <spring:bind path="fullName">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <label class="col-sm-2 control-label">Ф.И.О.</label>
-                <div class="col-sm-3">
-                    <form:input path="fullName" type="text" class="form-control " id="fullName" placeholder="Ф.И.О." required="required" />
+        <spring:bind path="name">
+            <div class="form-group row">
+                <label class="col-xs-2 col-form-label">Имя и Фамилия</label>
+                <div class="col-xs-3">
+                    <form:input path="name" type="text" class="form-control " id="name" placeholder="Имя и Фамилия" required="required" />
                 </div>
             </div>
         </spring:bind>
 
-        <c:choose>
-            <c:when  test="${mode eq 'edit'}">
-                <spring:bind path="idGroup">
-                    <div class="form-group ${status.error ? 'has-error' : ''}">
-                        <label class="col-sm-2 control-label">Номер группы</label>
-                        <div class="col-sm-3">
-                            <form:select path="idGroup" class="form-control">
-                                <form:option  label="--Select--"  value=""/>
-                                <form:options items="${list}" itemValue="id" itemLabel="numberGroup" />
-                            </form:select>
-                        </div>
-                        <div class="col-sm-4"></div>
-                    </div>
-                </spring:bind>
-            </c:when>
-
-            <c:otherwise>
-                <spring:bind path="idGroup">
-                    <div class="form-group ${status.error ? 'has-error' : ''}">
-                        <label class="col-sm-2 control-label">Номер группы</label>
-                        <div class="col-sm-3">
-                            <form:select path="idGroup" class="form-control">
-                                <form:option  label="--Select--"  value=""/>
-                                <form:options items="${list}" itemValue="id" itemLabel="numberGroup" />
-                            </form:select>
-                        </div>
-                        <div class="col-sm-4"></div>
-                    </div>
-                </spring:bind>
-            </c:otherwise>
-        </c:choose>
-
+        <spring:bind path="age">
+            <div class="form-group row">
+                <label class="col-xs-2 col-form-label">Возраст</label>
+                <div class="col-xs-3">
+                    <form:input path="age" type="text" class="form-control " id="age" value = "" placeholder="Возраст" />
+                </div>
+            </div>
+        </spring:bind>
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
@@ -75,10 +51,7 @@
             </div>
         </div>
     </form:form>
-
-
 </div>
-
 
 <jsp:include page="../fragments/footer.jsp" />
 </body>

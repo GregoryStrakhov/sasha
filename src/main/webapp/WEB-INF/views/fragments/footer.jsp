@@ -3,8 +3,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 <html>
-<hr align="center" width="100%" color="Red" />
-<div class="container" style="margin-bottom: 10%">
+<hr align="center" width="100%" color="Gray" />
+<div class="container" style="margin-bottom: 5%">
 
 	<footer>
 		<p>A.Boiko, TEST 2016</p>

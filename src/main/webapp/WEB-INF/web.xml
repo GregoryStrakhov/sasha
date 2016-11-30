@@ -4,7 +4,7 @@
          version="3.0">
 
     <welcome-file-list>
-        <welcome-file>/WEB-INF/views/jsp/login.jsp</welcome-file>
+        <welcome-file>/WEB-INF/views/jsp/list.jsp</welcome-file>
     </welcome-file-list>
 
     <!-- Создаёт контейнер Spring, разделяемый всеми сервлетами и фильтрами -->
@@ -34,15 +34,6 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <!-- Фильтр для Spring Security -->
-    <filter>
-        <filter-name>springSecurityFilterChain</filter-name>
-        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>springSecurityFilterChain</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
     <!-- Фильтр для перекодировки в utf8 -->
     <filter>
         <filter-name>charsetFilter</filter-name>

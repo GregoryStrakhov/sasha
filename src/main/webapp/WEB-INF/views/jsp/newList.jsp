@@ -24,9 +24,9 @@
     <div class="row"><br>
         <div class="col-xs-4">
             <form:form method="get" action="search">
-                <div class="input-group" style="float: left">
+                <div class="input-listToDO" style="float: left">
                     <input type="text" class="form-control" placeholder="Поиск по фамилии">
-                          <span class="input-group-btn">
+                          <span class="input-listToDO-btn">
                             <button class="btn btn-info" type="button">Поиск</button>
                           </span>
                 </div>
@@ -50,11 +50,11 @@
             <tr>
                 <td>${counter}</td>
                 <td>${students.fullName}</td>
-                <td>${students.group.numberGroup}</td>
-                <spring:url value="/student/${students.id}/delete" var="deleteStudent" />
-                <spring:url value="/student/${students.id}?mode=edit" var="editStudent" />
-                <td><button class="btn btn-info" onclick="location.href='${editStudent}'">Изменить</button>
-                    <button class="btn btn-danger" onclick="location.href='${deleteStudent}'">Удалить</button></td>
+                <td>${students.listToDO.numberGroup}</td>
+                <spring:url value="/user/${students.id}/delete" var="deleteUser" />
+                <spring:url value="/user/${students.id}?mode=edit" var="editUser" />
+                <td><button class="btn btn-info" onclick="location.href='${editUser}'">Изменить</button>
+                    <button class="btn btn-danger" onclick="location.href='${deleteUser}'">Удалить</button></td>
             </tr>
         </c:forEach>
     </table>

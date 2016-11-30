@@ -45,7 +45,7 @@ public class UserController {
     public String deleteStudent(@PathVariable("userId") int userId) {
         userService.delete(userId);
         ModelAndView mv = new ModelAndView("list");
-        mv.addObject("students", userService.getAll());
+        mv.addObject("users", userService.getAll());
         return "redirect:/user";
     }
 
@@ -61,7 +61,6 @@ public class UserController {
 
     /**
      * Save a new user.
-     *
      *
      * @return to page with all users
      */
@@ -95,8 +94,9 @@ public class UserController {
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public ModelAndView searchStudentByName(@RequestParam(name = "searchText") String searchText) {
         ModelAndView mv = new ModelAndView("list");
-        mv.addObject("students", userService.getUserByName(searchText));
+        mv.addObject("users", userService.getUserByName(searchText));
         return mv;
     }
+
 
 }

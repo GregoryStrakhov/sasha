@@ -4,7 +4,7 @@
          version="3.0">
 
     <welcome-file-list>
-        <welcome-file>/WEB-INF/views/jsp/list.jsp</welcome-file>
+        <welcome-file>/WEB-INF/views/jsp/login.jsp</welcome-file>
     </welcome-file-list>
 
     <!-- Создаёт контейнер Spring, разделяемый всеми сервлетами и фильтрами -->

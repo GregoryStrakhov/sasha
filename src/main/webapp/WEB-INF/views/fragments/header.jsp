@@ -10,11 +10,12 @@
 <head>
 	<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 	<link rel="stylesheet" href="${contextPath}/resources/css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="${contextPath}/resources/css/simplePagination.css"/>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<%--<link rel="stylesheet" href="${contextPath}/resources/css/bootstrap-theme.min.css"/>--%>
 	<script src="resources/js/bootstrap.min.js"></script>
-	<script src="resources/js/pagination.js"></script>
+	<script src="resources/js/jquery.bootpag.js"></script>
+	<script src="resources/js/jquery.bootpag.min.js"></script>
+
 </head>
 <title>VetClient</title>
 <spring:url value="/" var="urlHome" />

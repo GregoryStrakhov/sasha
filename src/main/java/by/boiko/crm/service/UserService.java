@@ -46,4 +46,6 @@ public interface UserService {
      * @return list of searched users
      */
     List getUserByName(String name);
+
+    List getUsers(int value, int maxResult);
 }

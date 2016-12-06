@@ -48,4 +48,6 @@ public interface UserDao {
      * @return a user
      */
     User load(int id);
+
+    List loadUsers(int value, int maxResult);
 }

@@ -8,6 +8,7 @@ import by.boiko.crm.model.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -24,18 +25,20 @@ public class UserDaoImpl implements UserDao {
     }
 
     @SuppressWarnings("unchecked")
+    @Transactional
     public List<User> loadAll() {
-        return sessionFactory.getCurrentSession().createQuery("from User")
-                .list();
+        return sessionFactory.getCurrentSession().createQuery("from User").setFirstResult(0).setMaxResults(10).list();
     }
 
     @Override
+    @Transactional
     public List loadUserByName(String name) {
         Query query = sessionFactory.getCurrentSession().createQuery("select u from User u where u.name LIKE :tagName");
         return query.setParameter("tagName", "%" + name + "%").list();
     }
 
     @Override
+    @Transactional
     public void delete(int id) {
         User user = sessionFactory.getCurrentSession().load(
                 User.class, id);
@@ -45,13 +48,21 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    @Transactional
     public void saveOrUpdate(User user) {
         sessionFactory.getCurrentSession().saveOrUpdate(user);
     }
 
     @Override
+    @Transactional
     public User load(int id) {
         return (User) sessionFactory.getCurrentSession().createQuery("select u from User u where id = :id").setParameter("id", id).uniqueResult();
+    }
+
+    @Override
+    @Transactional
+    public List loadUsers(int value, int maxResult) {
+        return sessionFactory.getCurrentSession().createQuery("from User").setFirstResult(value).setMaxResults(maxResult).list();
     }
 
 }

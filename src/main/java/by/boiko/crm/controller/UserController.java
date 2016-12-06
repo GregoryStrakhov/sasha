@@ -34,6 +34,12 @@ public class UserController {
         return mv;
     }
 
+    @RequestMapping(value = "/print_check")
+    public String print(){
+        LocalDateTime localDateTime = LocalDateTime.now();
+
+        return "redirect:/user";
+    }
 
     /**
      * Deletes a user by identifier.
@@ -45,7 +51,7 @@ public class UserController {
     public String deleteStudent(@PathVariable("userId") int userId) {
         userService.delete(userId);
         ModelAndView mv = new ModelAndView("list");
-        mv.addObject("users", userService.getAll());
+//        mv.addObject("users", userService.getAll());
         return "redirect:/user";
     }
 
@@ -64,8 +70,10 @@ public class UserController {
      *
      * @return to page with all users
      */
-    @RequestMapping(value = "/save/", method = RequestMethod.POST)
+    @RequestMapping(value = "/save/", method = RequestMethod.GET)
     public String saveOrUpdateStudent(@ModelAttribute("userForm") User user) {
+        LocalDateTime localDateTime = LocalDateTime.now();
+        user.setCreatedDate(localDateTime);
         userService.saveOrUpdate(user);
         return "redirect:/user";
     }
@@ -74,16 +82,17 @@ public class UserController {
     /**
      * Update a user by identifier.
      *
-     * @param userId identifier of a user
+     * @param id identifier of a user
      * @return form for update
      */
-    @RequestMapping(value = "/user/{userId}", method = RequestMethod.GET)
-    public String getStudent(@PathVariable("userId") int userId, Model model, @RequestParam("mode") String mode) {
-        User user = userService.get(userId);
-        model.addAttribute("mode", mode);
-        model.addAttribute("userForm");
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String getStudent(@PathVariable("id") int id, Model model) {
+        User user = userService.get(id);
+        userService.saveOrUpdate(user);
+        model.addAttribute("userForm", user);
         return "form";
     }
+
 
     /**
      * Filter users named.
@@ -95,6 +104,15 @@ public class UserController {
     public ModelAndView searchStudentByName(@RequestParam(name = "searchText") String searchText) {
         ModelAndView mv = new ModelAndView("list");
         mv.addObject("users", userService.getUserByName(searchText));
+        return mv;
+    }
+
+    @RequestMapping(value = "/getNum/{value}", method = RequestMethod.GET)
+    public ModelAndView getNum(@PathVariable(value = "value") int value){
+        int firstResult = value * 10;
+        int maxResult = value * 10 + 10;
+        ModelAndView mv = new ModelAndView("list");
+        mv.addObject("users", userService.getUsers(firstResult, maxResult));
         return mv;
     }
 

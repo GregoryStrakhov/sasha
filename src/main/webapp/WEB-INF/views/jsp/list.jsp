@@ -59,6 +59,44 @@
 
     <spring:url value="/user/form" var="AddUser"/>
     <button class="btn btn-info" onclick="location.href='${AddUser}'">Добавить</button>
+    <%--<nav aria-label="Page navigation" style="float: right;">--%>
+        <%--<ul class="pagination">--%>
+            <%--<li class="page-item">--%>
+                <%--<a class="page-link" href="#" aria-label="Previous">--%>
+                    <%--<span aria-hidden="true">&laquo;</span>--%>
+                    <%--<span class="sr-only">Previous</span>--%>
+                <%--</a>--%>
+            <%--</li>--%>
+            <%--<li class="page-item"><a class="page-link" href="">1</a></li>--%>
+            <%--<li class="page-item"><a class="page-link" href="">2</a></li>--%>
+            <%--<li class="page-item"><a class="page-link" href="#">3</a></li>--%>
+            <%--<li class="page-item"><a class="page-link" href="#">4</a></li>--%>
+            <%--<li class="page-item"><a class="page-link" href="#">5</a></li>--%>
+            <%--<li class="page-item">--%>
+                <%--<a class="page-link" href="#" aria-label="Next">--%>
+                    <%--<span aria-hidden="true">&raquo;</span>--%>
+                    <%--<span class="sr-only">Next</span>--%>
+                <%--</a>--%>
+            <%--</li>--%>
+        <%--</ul>--%>
+    <%--</nav>--%>
+    <div id="content">Dynamic Content goes here</div>
+    <div id="page-selection">Pagination goes here</div>
+    <script>
+        // init bootpag
+        $('#page-selection').bootpag({
+            total: 10,
+            page: 1,
+            maxVisible: 10
+        }).on("page", function(event, /* page number here */ num){
+            $.ajax({
+                type: "GET",
+                url: "user/getNum/" + num,
+                dataType: "json"
+            });
+            $("#content").html("Insert content"); // some ajax content loading...
+        });
+    </script>
 </div>
 
 <jsp:include page="../fragments/footer.jsp"/>

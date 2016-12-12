@@ -26,7 +26,7 @@
     <br><br><br><br><br><br>
     <h1 align="center">Cписок пользователей</h1>
 
-    <table class="table ">
+    <table class="table">
         <tr>
             <th>№</th>
             <th>Фамилия и Имя</th>
@@ -45,6 +45,7 @@
                 <td>${users.age}</td>
                 <td>${users.admin}</td>
                 <td>${users.createdDate}</td>
+
                 <spring:url value="/user/${users.id}/delete" var="deleteUser"/>
                 <spring:url value="/user/${users.id}" var="editUser"/>
                 <td>
@@ -56,47 +57,31 @@
         </c:forEach>
 
     </table>
-
+    <button class="btn btn-info" onclick="location.href='${AddUser}'">Добавить</button><br>
     <spring:url value="/user/form" var="AddUser"/>
-    <button class="btn btn-info" onclick="location.href='${AddUser}'">Добавить</button>
-    <%--<nav aria-label="Page navigation" style="float: right;">--%>
-        <%--<ul class="pagination">--%>
-            <%--<li class="page-item">--%>
-                <%--<a class="page-link" href="#" aria-label="Previous">--%>
-                    <%--<span aria-hidden="true">&laquo;</span>--%>
-                    <%--<span class="sr-only">Previous</span>--%>
-                <%--</a>--%>
-            <%--</li>--%>
-            <%--<li class="page-item"><a class="page-link" href="">1</a></li>--%>
-            <%--<li class="page-item"><a class="page-link" href="">2</a></li>--%>
-            <%--<li class="page-item"><a class="page-link" href="#">3</a></li>--%>
-            <%--<li class="page-item"><a class="page-link" href="#">4</a></li>--%>
-            <%--<li class="page-item"><a class="page-link" href="#">5</a></li>--%>
-            <%--<li class="page-item">--%>
-                <%--<a class="page-link" href="#" aria-label="Next">--%>
-                    <%--<span aria-hidden="true">&raquo;</span>--%>
-                    <%--<span class="sr-only">Next</span>--%>
-                <%--</a>--%>
-            <%--</li>--%>
-        <%--</ul>--%>
-    <%--</nav>--%>
-    <div id="content">Dynamic Content goes here</div>
-    <div id="page-selection">Pagination goes here</div>
+    <ul id="pagination-demo" class="pagination-sm"></ul>
     <script>
-        // init bootpag
-        $('#page-selection').bootpag({
-            total: 10,
-            page: 1,
-            maxVisible: 10
-        }).on("page", function(event, /* page number here */ num){
-            $.ajax({
-                type: "GET",
-                url: "user/getNum/" + num,
-                dataType: "json"
-            });
-            $("#content").html("Insert content"); // some ajax content loading...
+
+        var countAll = ${counts};
+        var pages = Math.ceil(countAll/10);
+        $('#pagination-demo').twbsPagination({
+            totalPages: pages,
+            visiblePages: 5,
+            onPageClick: function (event, page) {
+                $.ajax({
+                    type: "POST",
+                    url: page,
+                    dataType: "dataType",
+                    success: function(data){
+                            ("list").html(data);
+
+                    }});
+            }
         });
     </script>
+
+
+
 </div>
 
 <jsp:include page="../fragments/footer.jsp"/>

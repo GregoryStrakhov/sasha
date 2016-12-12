@@ -28,8 +28,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List getUsers(int value, int maxResult) {
+    public List<User> getUsers(int value, int maxResult) {
         return userDao.loadUsers(value, maxResult);
+    }
+
+    @Override
+    public long getAllCount() {
+        return userDao.loadAllCount();
     }
 
     public void delete(int id) {

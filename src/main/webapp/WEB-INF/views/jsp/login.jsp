@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="container" style="width: 300px;">
-    <spring:url value="/user" var="loginUrl"/>
+    <spring:url value="/getNum/0" var="loginUrl"/>
     <form action="${loginUrl}" method="post">
         <br>
         <div style="text-align: center;"><h2 class="form-signin-heading">Test</h2></div>

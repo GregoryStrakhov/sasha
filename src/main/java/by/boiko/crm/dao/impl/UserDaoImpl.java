@@ -27,7 +27,7 @@ public class UserDaoImpl implements UserDao {
     @SuppressWarnings("unchecked")
     @Transactional
     public List<User> loadAll() {
-        return sessionFactory.getCurrentSession().createQuery("from User").setFirstResult(0).setMaxResults(10).list();
+        return sessionFactory.getCurrentSession().createQuery("from User").list();
     }
 
     @Override
@@ -61,8 +61,14 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     @Transactional
-    public List loadUsers(int value, int maxResult) {
-        return sessionFactory.getCurrentSession().createQuery("from User").setFirstResult(value).setMaxResults(maxResult).list();
+    public List<User> loadUsers(int pageNum, int pageSize) {
+        return sessionFactory.getCurrentSession().createQuery("from User").setFirstResult(pageNum * pageSize).setMaxResults(pageNum * pageSize + pageSize).list();
+    }
+
+    @Override
+    @Transactional
+    public long loadAllCount() {
+        return (long) sessionFactory.getCurrentSession().createQuery("SELECT COUNT(e) FROM User e").getSingleResult();
     }
 
 }

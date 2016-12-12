@@ -16,30 +16,27 @@ import java.time.LocalDateTime;
  */
 
 @Controller
-@RequestMapping(value = "/user")
 public class UserController {
 
+    private final UserService userService;
+
     @Autowired
-    private UserService userService;
-
-    /**
-     * Returns list of all users.
-     *
-     * @return list of users
-     */
-    @RequestMapping(value = "")
-    public ModelAndView getAllUsers() {
-        ModelAndView mv = new ModelAndView("list");
-        mv.addObject("users", userService.getAll());
-        return mv;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
-    @RequestMapping(value = "/print_check")
-    public String print(){
-        LocalDateTime localDateTime = LocalDateTime.now();
-
-        return "redirect:/user";
-    }
+//    /**
+//     * Returns list of all users.
+//     *
+//     * @return list of users
+//     */
+//    @RequestMapping(value = "user")
+//    public ModelAndView getAllUsers() {
+//        ModelAndView mv = new ModelAndView("list");
+//        mv.addObject("users", userService.getAll());
+//        mv.addObject("counts", userService.getAllCount());
+//        return mv;
+//    }
 
     /**
      * Deletes a user by identifier.
@@ -107,14 +104,12 @@ public class UserController {
         return mv;
     }
 
-    @RequestMapping(value = "/getNum/{value}", method = RequestMethod.GET)
-    public ModelAndView getNum(@PathVariable(value = "value") int value){
-        int firstResult = value * 10;
-        int maxResult = value * 10 + 10;
+    @RequestMapping(value = "/getNum/{page}")
+    public ModelAndView getNum(@PathVariable(value = "page") int page) {
         ModelAndView mv = new ModelAndView("list");
-        mv.addObject("users", userService.getUsers(firstResult, maxResult));
+        mv.addObject("counts", userService.getAllCount());
+        int maxResult = 10;
+        mv.addObject("users", userService.getUsers(page, maxResult));
         return mv;
     }
-
-
 }

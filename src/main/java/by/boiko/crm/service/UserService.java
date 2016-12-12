@@ -47,5 +47,7 @@ public interface UserService {
      */
     List getUserByName(String name);
 
-    List getUsers(int value, int maxResult);
+    List<User> getUsers(int value, int maxResult);
+
+    long getAllCount();
 }

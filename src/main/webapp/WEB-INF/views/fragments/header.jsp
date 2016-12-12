@@ -9,12 +9,12 @@
 <html lang="en">
 <head>
 	<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+	<script src="${contextPath}/resources/js/jquery-3.1.1.js"></script>
 	<link rel="stylesheet" href="${contextPath}/resources/css/bootstrap.min.css"/>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<%--<link rel="stylesheet" href="${contextPath}/resources/css/bootstrap-theme.min.css"/>--%>
-	<script src="resources/js/bootstrap.min.js"></script>
-	<script src="resources/js/jquery.bootpag.js"></script>
-	<script src="resources/js/jquery.bootpag.min.js"></script>
+	<script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+	<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
+	<script src="${contextPath}/resources/js/jquery.twbsPagination.min.js"></script>
+
 
 </head>
 <title>VetClient</title>

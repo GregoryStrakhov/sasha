@@ -49,5 +49,7 @@ public interface UserDao {
      */
     User load(int id);
 
-    List loadUsers(int value, int maxResult);
+    List<User> loadUsers(int value, int maxResult);
+
+    long loadAllCount();
 }

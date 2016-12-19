@@ -45,7 +45,7 @@ public interface UserService {
      * @param name name of a student for searching
      * @return list of searched users
      */
-    List getUserByName(String name);
+    List<User> getUserByName(String name);
 
     List<User> getUsers(int value, int maxResult);
 

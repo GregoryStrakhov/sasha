@@ -8,8 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * The controller determines methods for access to User service.
@@ -25,18 +25,18 @@ public class UserController {
         this.userService = userService;
     }
 
-//    /**
-//     * Returns list of all users.
-//     *
-//     * @return list of users
-//     */
-//    @RequestMapping(value = "user")
-//    public ModelAndView getAllUsers() {
-//        ModelAndView mv = new ModelAndView("list");
-//        mv.addObject("users", userService.getAll());
-//        mv.addObject("counts", userService.getAllCount());
-//        return mv;
-//    }
+    /**
+     * Returns list of all users.
+     *
+     * @return list of users
+     */
+    @RequestMapping(value = "user")
+    public ModelAndView getAllUsers() {
+        ModelAndView mv = new ModelAndView("list");
+        mv.addObject("users", userService.getAll());
+        mv.addObject("counts", userService.getAllCount());
+        return mv;
+    }
 
     /**
      * Deletes a user by identifier.
@@ -44,11 +44,11 @@ public class UserController {
      * @param userId identifier of a user to delete
      * @return refresh the page
      */
-    @RequestMapping(value = "/{userId}/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "user/{userId}/delete", method = RequestMethod.GET)
     public String deleteStudent(@PathVariable("userId") int userId) {
         userService.delete(userId);
         ModelAndView mv = new ModelAndView("list");
-//        mv.addObject("users", userService.getAll());
+        mv.addObject("users", userService.getAll());
         return "redirect:/user";
     }
 
@@ -57,7 +57,7 @@ public class UserController {
      *
      * @return page with form
      */
-    @RequestMapping(value = "/form")//TODO add method GET or POST
+    @RequestMapping(value = "user/form")//TODO add method GET or POST
     public ModelAndView openUserEditForm() {
         return new ModelAndView("form", "userForm", new User());
     }
@@ -67,7 +67,7 @@ public class UserController {
      *
      * @return to page with all users
      */
-    @RequestMapping(value = "/save/", method = RequestMethod.GET)
+    @RequestMapping(value = "/save/", method = RequestMethod.POST)
     public String saveOrUpdateStudent(@ModelAttribute("userForm") User user) {
         LocalDateTime localDateTime = LocalDateTime.now();
         user.setCreatedDate(localDateTime);
@@ -82,7 +82,7 @@ public class UserController {
      * @param id identifier of a user
      * @return form for update
      */
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "user/{id}", method = RequestMethod.GET)
     public String getStudent(@PathVariable("id") int id, Model model) {
         User user = userService.get(id);
         userService.saveOrUpdate(user);
@@ -97,19 +97,24 @@ public class UserController {
      * @param searchText text for search
      * @return page with the filtered users
      */
-    @RequestMapping(value = "/search", method = RequestMethod.GET)
+
+    @RequestMapping(value = "/search")
     public ModelAndView searchStudentByName(@RequestParam(name = "searchText") String searchText) {
         ModelAndView mv = new ModelAndView("list");
+        mv.addObject("counts", userService.getAllCount());
         mv.addObject("users", userService.getUserByName(searchText));
         return mv;
     }
 
-    @RequestMapping(value = "/getNum/{page}")
-    public ModelAndView getNum(@PathVariable(value = "page") int page) {
+
+
+    @RequestMapping(value = "/user/page/{page}")
+    @ResponseBody
+    public List<User> getNum(@PathVariable(value = "page") int page, User user) {
         ModelAndView mv = new ModelAndView("list");
         mv.addObject("counts", userService.getAllCount());
         int maxResult = 10;
         mv.addObject("users", userService.getUsers(page, maxResult));
-        return mv;
+        return userService.getUsers(page, maxResult);
     }
 }

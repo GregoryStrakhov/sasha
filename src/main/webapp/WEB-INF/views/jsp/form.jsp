@@ -24,7 +24,7 @@
     </c:choose><br><br>
 
 
-    <form:form method="POST" modelAttribute="userForm" class="form-horizontal" action="/user/save/">
+    <form:form method="POST" modelAttribute="userForm" class="form-horizontal" action="/save/">
         <form:input type="hidden" path="id" id="id"/>
 
         <spring:bind path="name">
@@ -40,8 +40,15 @@
             <div class="form-group row">
                 <label class="col-xs-2 col-form-label">Возраст</label>
                 <div class="col-xs-3">
-                    <form:input path="age" type="text" class="form-control " id="age" value = "" placeholder="Возраст" />
+                    <form:input path="age" type="text" class="form-control " id="age" value = "" placeholder="Возраст" required="required" />
                 </div>
+            </div>
+        </spring:bind>
+
+        <spring:bind path="admin">
+            <label class="checkbox">Администратор</label>
+            <div class="checkbox" >
+                    <form:checkbox path="admin"  id="admin" data-off-title="No" data-on-title="Yes"/>
             </div>
         </spring:bind>
 

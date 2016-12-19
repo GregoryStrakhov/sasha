@@ -32,7 +32,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     @Transactional
-    public List loadUserByName(String name) {
+    public List<User> loadUserByName(String name) {
         Query query = sessionFactory.getCurrentSession().createQuery("select u from User u where u.name LIKE :tagName");
         return query.setParameter("tagName", "%" + name + "%").list();
     }
@@ -61,8 +61,14 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     @Transactional
-    public List<User> loadUsers(int pageNum, int pageSize) {
-        return sessionFactory.getCurrentSession().createQuery("from User").setFirstResult(pageNum * pageSize).setMaxResults(pageNum * pageSize + pageSize).list();
+    public List<User> loadUsers(int pageNum, int maxResult) {
+        if (pageNum == 1){
+            return sessionFactory.getCurrentSession().createQuery("from User").setFirstResult(0).setMaxResults(maxResult).list();
+        }
+        else {
+            return sessionFactory.getCurrentSession().createQuery("from User").setFirstResult(pageNum * maxResult - maxResult).setMaxResults(maxResult).list();
+        }
+
     }
 
     @Override

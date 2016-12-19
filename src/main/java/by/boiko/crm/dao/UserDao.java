@@ -25,7 +25,7 @@ public interface UserDao {
      * @param name name of a user for searching
      * @return list of searched users
      */
-    List loadUserByName(String name);
+    List<User> loadUserByName(String name);
 
     /**
      * Deletes a user from a storage by id.

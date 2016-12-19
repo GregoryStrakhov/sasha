@@ -14,6 +14,7 @@
 	<script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
 	<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 	<script src="${contextPath}/resources/js/jquery.twbsPagination.min.js"></script>
+	<script src="${contextPath}/resources/js/bootstrap-checkbox.min.js"></script>
 
 
 </head>
@@ -26,9 +27,6 @@
 	<ul class="nav navbar-nav">
 		<li class="nav-item active">
 			<a class="nav-link" href="${listUsers}">Список пользователей <span class="sr-only">(current)</span></a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="#">Список задач</a>
 		</li>
 	</ul>
 </nav>

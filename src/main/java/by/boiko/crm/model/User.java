@@ -2,6 +2,7 @@ package by.boiko.crm.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name = "user")
@@ -19,7 +20,7 @@ public class User {
     private int age;
 
     @Column(name = "isAdmin")
-    private boolean isAdmin;
+    private boolean admin;
 
     @Column(name = "createdDate")
     private LocalDateTime createdDate;
@@ -27,11 +28,21 @@ public class User {
     public User() {
     }
 
-    public User(String name, int age, boolean isAdmin, LocalDateTime createdDate) {
+    public User(String name, int age, boolean admin, LocalDateTime createdDate) {
         this.name = name;
         this.age = age;
-        this.isAdmin = isAdmin;
+        this.admin = admin;
         this.createdDate = createdDate;
+
+    }
+
+    public String getAdminString() {
+        return admin ? "Да" : "Нет";
+    }
+
+    public String getCreatedDateString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return getCreatedDate().format(formatter);
     }
 
     public LocalDateTime getCreatedDate() {
@@ -67,13 +78,10 @@ public class User {
     }
 
     public boolean isAdmin() {
-        return isAdmin;
+        return admin;
     }
 
     public void setAdmin(boolean admin) {
-        isAdmin = admin;
+        this.admin = admin;
     }
 }
-
-
-

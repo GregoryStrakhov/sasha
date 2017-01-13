@@ -22,10 +22,12 @@ public interface UserDao {
     /**
      * Loads list of users filtered by name.
      *
-     * @param name name of a user for searching
-     * @return list of searched users
+     *
+     * @param page
+     * @param maxResult
+     *@param name name of a user for searching  @return list of searched users
      */
-    List<User> loadUserByName(String name);
+    List<User> loadUserByName(int page, int maxResult, String name);
 
     /**
      * Deletes a user from a storage by id.

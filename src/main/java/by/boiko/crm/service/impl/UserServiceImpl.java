@@ -23,8 +23,8 @@ public class UserServiceImpl implements UserService {
         return userDao.load(id);
     }
 
-    public List<User> getUserByName(String name) {
-        return userDao.loadUserByName(name);
+    public List<User> getUserByName(int page, int maxResult, String name) {
+        return userDao.loadUserByName(page, maxResult, name);
     }
 
     @Override

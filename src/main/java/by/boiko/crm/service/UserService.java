@@ -42,10 +42,12 @@ public interface UserService {
     /**
      * Loads list of users filtered by name.
      *
-     * @param name name of a student for searching
-     * @return list of searched users
+     *
+     * @param page
+     * @param maxResult
+     *@param name name of a student for searching  @return list of searched users
      */
-    List<User> getUserByName(String name);
+    List<User> getUserByName(int page, int maxResult, String name);
 
     List<User> getUsers(int value, int maxResult);
 

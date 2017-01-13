@@ -98,23 +98,34 @@ public class UserController {
      * @return page with the filtered users
      */
 
-    @RequestMapping(value = "/search")
-    public ModelAndView searchStudentByName(@RequestParam(name = "searchText") String searchText) {
-        ModelAndView mv = new ModelAndView("list");
-        mv.addObject("counts", userService.getAllCount());
-        mv.addObject("users", userService.getUserByName(searchText));
-        return mv;
-    }
-
+//    @RequestMapping(value = "/search")
+//    @ResponseBody
+//    public List<User> searchStudentByName(@RequestParam(name = "searchText") String searchText) {
+////        ModelAndView mv = new ModelAndView("list");
+////        mv.addObject("counts", userService.getAllCount());
+////        mv.addObject("users", userService.getUserByName(searchText));
+//        return userService.getUserByName(page, maxResult, searchText);
+//    }
 
 
     @RequestMapping(value = "/user/page/{page}")
     @ResponseBody
-    public List<User> getNum(@PathVariable(value = "page") int page, User user) {
+    public List<User> getNum(@PathVariable(value = "page")  int page) {
         ModelAndView mv = new ModelAndView("list");
         mv.addObject("counts", userService.getAllCount());
         int maxResult = 10;
         mv.addObject("users", userService.getUsers(page, maxResult));
         return userService.getUsers(page, maxResult);
+
+    }
+
+    @RequestMapping(value = "/user/page/{page}/{searchText}")
+    @ResponseBody
+    public List<User> getNum(@PathVariable(value = "page") int page, @PathVariable("searchText") String searchText) {
+        ModelAndView mv = new ModelAndView("list");
+        mv.addObject("counts", userService.getAllCount());
+        int maxResult = 10;
+        mv.addObject("users", userService.getUsers(page, maxResult));
+        return userService.getUserByName(page, maxResult, searchText);
     }
 }

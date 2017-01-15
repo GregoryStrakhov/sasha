@@ -20,7 +20,7 @@
 </head>
 <title>VetClient</title>
 <spring:url value="/" var="urlHome" />
-<spring:url value="/user" var="listUsers" />
+<spring:url value="/user" var="listUsers"  />
 
 
 <nav class="navbar navbar-light bg-faded">

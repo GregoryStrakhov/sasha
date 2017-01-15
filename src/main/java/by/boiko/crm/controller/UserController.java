@@ -30,7 +30,7 @@ public class UserController {
      *
      * @return list of users
      */
-    @RequestMapping(value = "/user")
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
     public ModelAndView getAllUsers() {
         ModelAndView mv = new ModelAndView("list");
         mv.addObject("users", userService.getAll());
@@ -57,7 +57,7 @@ public class UserController {
      *
      * @return page with form
      */
-    @RequestMapping(value = "user/form")//TODO add method GET or POST
+    @RequestMapping(value = "user/form")
     public ModelAndView openUserEditForm() {
         return new ModelAndView("form", "userForm", new User());
     }
@@ -67,7 +67,7 @@ public class UserController {
      *
      * @return to page with all users
      */
-    @RequestMapping(value = "/save/", method = RequestMethod.POST)
+    @RequestMapping(value = "save")
     public String saveOrUpdateStudent(@ModelAttribute("userForm") User user) {
         LocalDateTime localDateTime = LocalDateTime.now();
         user.setCreatedDate(localDateTime);

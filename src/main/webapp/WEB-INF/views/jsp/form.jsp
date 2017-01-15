@@ -24,7 +24,7 @@
     </c:choose><br><br>
 
 
-    <form:form method="POST" modelAttribute="userForm" class="form-horizontal" action="/save/">
+    <form:form modelAttribute="userForm" class="form-horizontal" action="save">
         <form:input type="hidden" path="id" id="id"/>
 
         <spring:bind path="name">

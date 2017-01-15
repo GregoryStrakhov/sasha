@@ -40,6 +40,6 @@
             class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
 
 
-    <!--<bean id="userDao" class="by.boiko.crm.dao.impl.UserDaoImpl"/>-->
-    <!--<bean id="userService" class="by.boiko.crm.service.impl.UserServiceImpl"/>-->
+    <bean id="userDao" class="by.boiko.crm.dao.impl.UserDaoImpl"/>
+    <bean id="userService" class="by.boiko.crm.service.impl.UserServiceImpl"/>
 </beans>

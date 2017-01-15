@@ -58,80 +58,43 @@
                 getData(page, $('#searchName').val());
             }
         });
-
         function getData(page, name) {
             paramPage = page;
             console.log(name)
-            if (name != null) {
-                $.ajax({
-                    type: "POST",
-                    url: "/user/page/" + page,
-                    dataType: "text",
-                    success: function (data) {
-                        var obj = JSON.parse(data);
-                        console.log(page)
-                        $('#mybody').html('');
-                        for (var i = 0; i < obj.length; i++) {
-                            newrow = document.all.mybody.insertRow()
-                            newcell = newrow.insertCell(0)
-                            newcell.innerText = obj[i].name
-                            newcell = newrow.insertCell(1)
-                            newcell.innerText = obj[i].age
-                            if (obj[i].admin == false) {
-                                newcell = newrow.insertCell(2)
-                                newcell.innerText = "Нет"
-                            } else {
-                                newcell = newrow.insertCell(2)
-                                newcell.innerText = "Да"
-                            }
-                            newcell = newrow.insertCell(3)
-                            newcell.innerText = obj[i].createdDateString
-                            newcell = newrow.insertCell(4)
-                            newcell.innerHTML = newcell.innerHTML + " <button type='button' class='btn btn-primary' onclick = location.href='/user/" + obj[i].id + "' >Изменить</button><br>";
-                            newcell = newrow.insertCell(5)
-                            newcell.innerHTML = newcell.innerHTML + " <button type='button' class='btn btn-danger' onclick = location.href='/user/" + obj[i].id + "/delete' >Удалить</button><br>";
-                        }
-                    }
-                });
-            }
-            else {
-                $.ajax({
-                    type: "POST",
-                    url: "/user/page/1/" + name,
-                    dataType: "text",
-                    success: function (data) {
-                        console.log(name)
-                        var obj = JSON.parse(data);
-                        $('#mybody').html('');
-                        for (var i = 0; i < obj.length; i++) {
-                            newrow = document.all.mybody.insertRow()
-                            newcell = newrow.insertCell(0)
-                            newcell.innerText = obj[i].name
-                            newcell = newrow.insertCell(1)
-                            newcell.innerText = obj[i].age
-                            if (obj[i].admin == false) {
-                                newcell = newrow.insertCell(2)
-                                newcell.innerText = "Нет"
-                            } else {
-                                newcell = newrow.insertCell(2)
-                                newcell.innerText = "Да"
-                            }
-                            newcell = newrow.insertCell(3)
-                            newcell.innerText = obj[i].createdDateString
-                            newcell = newrow.insertCell(4)
-                            newcell.innerHTML = newcell.innerHTML + " <button type='button' class='btn btn-primary' onclick = location.href='/user/" + obj[i].id + "' >Изменить</button><br>";
-                            newcell = newrow.insertCell(5)
-                            newcell.innerHTML = newcell.innerHTML + " <button type='button' class='btn btn-danger' onclick = location.href='/user/" + obj[i].id + "/delete' >Удалить</button><br>";
-                        }
-                    }
-                });
-            }
+            $.ajax({
+                type: "POST",
+                url: "/user/page/" +  page + "/" + name,
 
+                dataType: "text",
+                success: function (data) {
+                    var obj = JSON.parse(data);
+                    console.log(page)
+                    console.log(data)
+                    $('#mybody').html('');
+                    for (var i = 0; i < obj.length; i++) {
+                        newrow = document.all.mybody.insertRow()
+                        newcell = newrow.insertCell(0)
+                        newcell.innerText = obj[i].name
+                        newcell = newrow.insertCell(1)
+                        newcell.innerText = obj[i].age
+                        if (obj[i].admin == false) {
+                            newcell = newrow.insertCell(2)
+                            newcell.innerText = "Нет"
+                        } else {
+                            newcell = newrow.insertCell(2)
+                            newcell.innerText = "Да"
+                        }
+                        newcell = newrow.insertCell(3)
+                        newcell.innerText = obj[i].createdDateString
+                        newcell = newrow.insertCell(4)
+                        newcell.innerHTML = newcell.innerHTML + " <button type='button' class='btn btn-primary' onclick = location.href='/user/" + obj[i].id + "' >Изменить</button><br>";
+                        newcell = newrow.insertCell(5)
+                        newcell.innerHTML = newcell.innerHTML + " <button type='button' class='btn btn-danger' onclick = location.href='/user/" + obj[i].id + "/delete' >Удалить</button><br>";
+                    }
+                }
+            });
         }
-
-
     </script>
-
 
     <spring:url value="/user/form" var="AddUser"/>
     <button class="btn btn-info" onclick="location.href='${AddUser}'">Добавить</button>

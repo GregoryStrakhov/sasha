@@ -30,7 +30,7 @@ public class UserController {
      *
      * @return list of users
      */
-    @RequestMapping(value = "user")
+    @RequestMapping(value = "/user")
     public ModelAndView getAllUsers() {
         ModelAndView mv = new ModelAndView("list");
         mv.addObject("users", userService.getAll());
@@ -89,23 +89,6 @@ public class UserController {
         model.addAttribute("userForm", user);
         return "form";
     }
-
-
-    /**
-     * Filter users named.
-     *
-     * @param searchText text for search
-     * @return page with the filtered users
-     */
-
-//    @RequestMapping(value = "/search")
-//    @ResponseBody
-//    public List<User> searchStudentByName(@RequestParam(name = "searchText") String searchText) {
-////        ModelAndView mv = new ModelAndView("list");
-////        mv.addObject("counts", userService.getAllCount());
-////        mv.addObject("users", userService.getUserByName(searchText));
-//        return userService.getUserByName(page, maxResult, searchText);
-//    }
 
 
     @RequestMapping(value = "/user/page/{page}")

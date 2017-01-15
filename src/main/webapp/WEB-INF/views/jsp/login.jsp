@@ -18,7 +18,7 @@
         <br>
         <div style="text-align: center;"><h2 class="form-signin-heading">Test</h2></div>
         <br>
-        <button class="btn btn-lg btn-danger btn-block" type="submit">Войти</button>
+        <button class="btn btn-lg btn-danger btn-block" onclick="location.href='${loginUrl}'">Войти</button>
     </form>
 </div>
 </body>

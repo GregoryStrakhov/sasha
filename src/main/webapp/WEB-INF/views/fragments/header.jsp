@@ -19,17 +19,17 @@
 
 </head>
 <title>VetClient</title>
-<spring:url value="/" var="urlHome" />
-<spring:url value="/user" var="listUsers"  />
+
+<spring:url value="/user" var="loginUrl"/>
 
 
 <nav class="navbar navbar-light bg-faded">
 	<ul class="nav navbar-nav">
 		<li class="nav-item active">
-			<a class="nav-link" href="${listUsers}">Список пользователей <span class="sr-only">(current)</span></a>
+			<a class="nav-link" onclick="location.href='${loginUrl}'" >Список пользователей <span class="sr-only">(current)</span></a>
 		</li>
 	</ul>
 </nav>
 
-</nav>
+
 </html>
